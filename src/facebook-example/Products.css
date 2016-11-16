@@ -1,0 +1,9 @@
+.products-container{
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    margin-top: 50px;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: left;
+}

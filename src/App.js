@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Counter from './Counter';
+import PRODUCTS from './facebook-example/Products';
+import FilterableProductTable from './facebook-example/FilterableProductTable';
+
 
 class App extends Component {
   render() {
@@ -15,6 +18,9 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
         <Counter />
+        <div>
+          <FilterableProductTable products={PRODUCTS} />
+        </div>
       </div>
     );
   }
