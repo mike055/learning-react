@@ -4,7 +4,7 @@ import './App.css';
 import Counter from './Counter';
 import PRODUCTS from './facebook-example/Products';
 import FilterableProductTable from './facebook-example/FilterableProductTable';
-
+import Game from './game-tutorial/Game';
 
 class App extends Component {
   render() {
@@ -20,6 +20,9 @@ class App extends Component {
         <Counter />
         <div>
           <FilterableProductTable products={PRODUCTS} />
+        </div>
+        <div>
+          <Game  />
         </div>
       </div>
     );
