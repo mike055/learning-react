@@ -52,8 +52,12 @@ class Game extends React.Component {
       status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
     }
 
+    console.log(this.state.stepNumber);
+
     const moves = history.map((step, move) => {
       let desc = 'Game start';
+
+      let bold= this.state.stepNumber === move;
 
       if(move) {
         let x = step.movePosition % 3;
@@ -63,7 +67,7 @@ class Game extends React.Component {
       }
 
       return (
-        <li key={move}>
+        <li key={move} className={(bold ? 'bold' : '')}>
           <a href="#" onClick={() => this.jumpTo(move)}>{desc}</a>
         </li>
       );
