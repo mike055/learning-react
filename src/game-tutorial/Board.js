@@ -4,8 +4,8 @@ import Square from './Square';
 
 class Board extends React.Component {
 
-  renderSquare(i) {
-    return <Square value={this.props.squares[i]} onClick={() => this.props.onClick(i)} />;
+  renderSquare(i, winningCol) {
+    return <Square key={i} value={this.props.squares[i]} onClick={() => this.props.onClick(i)} winningCol={winningCol} />;
   }
   render() {
 
@@ -13,12 +13,15 @@ class Board extends React.Component {
     const board = [0,1,2].map( (i) => { 
       let rowStartingPoint = i * 3;
 
-      const squares = [0,1,2].map( (j) => { 
-        return this.renderSquare(rowStartingPoint + j);
+      const squares = [0,1,2].map( (j) => {
+        var colNumber = rowStartingPoint + j;
+        var winningCol = this.props.winningLines.includes(colNumber);
+
+        return this.renderSquare(rowStartingPoint + j, winningCol);
       });
 
       return (
-        <div className="board-row">
+        <div className="board-row" key={i}>
           {squares}
         </div>
       );
