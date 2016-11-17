@@ -52,27 +52,25 @@ class Game extends React.Component {
       status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
     }
 
-    console.log(this.state.stepNumber);
-
     const moves = history.map((step, move) => {
-      let desc = 'Game start';
+        let desc = 'Game start';
 
-      let bold= this.state.stepNumber === move;
+        let bold= this.state.stepNumber === move;
 
-      if(move) {
-        let x = step.movePosition % 3;
-        let y = Math.floor(step.movePosition / 3); 
+        if(move) {
+          let x = step.movePosition % 3;
+          let y = Math.floor(step.movePosition / 3); 
 
-        desc = 'Move #' + move + ' (' + x + ',' + y +')';
+          desc = 'Move #' + move + ' (' + x + ',' + y +')';
+        }
+
+        return (
+          <li key={move} className={(bold ? 'bold' : '')}>
+            <a href="#" onClick={() => this.jumpTo(move)}>{desc}</a>
+          </li>
+        );
       }
-
-      return (
-        <li key={move} className={(bold ? 'bold' : '')}>
-          <a href="#" onClick={() => this.jumpTo(move)}>{desc}</a>
-        </li>
-      );
-    }
-  );
+    );
 
     return (
       <div className="game">
@@ -92,3 +90,9 @@ class Game extends React.Component {
 }
 
 export default Game;
+
+/*
+Rewrite Board to use two loops to make the squares instead of hardcoding them.
+Add a toggle button that lets you sort the moves in either ascending or descending order.
+When someone wins, highlight the three squares that caused the win.
+*/

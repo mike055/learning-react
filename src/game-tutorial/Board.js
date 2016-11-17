@@ -9,23 +9,25 @@ class Board extends React.Component {
   }
   render() {
 
+    //todo: seems weird to have this array, investigate for loop
+    const board = [0,1,2].map( (i) => { 
+      let rowStartingPoint = i * 3;
+
+      const squares = [0,1,2].map( (j) => { 
+        return this.renderSquare(rowStartingPoint + j);
+      });
+
+      return (
+        <div className="board-row">
+          {squares}
+        </div>
+      );
+
+    });
+
     return (
       <div>
-        <div className="board-row">
-          {this.renderSquare(0)}
-          {this.renderSquare(1)}
-          {this.renderSquare(2)}
-        </div>
-        <div className="board-row">
-          {this.renderSquare(3)}
-          {this.renderSquare(4)}
-          {this.renderSquare(5)}
-        </div>
-        <div className="board-row">
-          {this.renderSquare(6)}
-          {this.renderSquare(7)}
-          {this.renderSquare(8)}
-        </div>
+        {board}
       </div>
     );
   }
